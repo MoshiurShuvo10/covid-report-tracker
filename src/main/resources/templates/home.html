@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Covid Issue Tracker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container mt-5">
+<h1>Covid Issue Tracker</h1>
+<p>This application lists the current number of cases reported across the globe.</p>
+<div class="jumbotron">
+    <h1 class="display-4" th:text="${totalReportedCases}"></h1>
+    <p class="lead">Total cases reported as of today</p>
+    <hr class="my-4">
+    <p>
+    <span>Newly reported case since previous day</span>
+    <span th:text="${totalNewlyReportedCases}"></span>
+    </p>
+</div>
+    <table class="table">
+        <tr>
+            <th>State/Province</th>
+            <th>Country/Region</th>
+            <th>Total Cases</th>
+            <th>Newly Reported Cases</th>
+        </tr>
+        <tr th:each="st : ${stats}">
+            <td th:text="${st.getCountry()}">Onions</td>
+            <td th:text="${st.getState()}">2.41</td>
+            <td th:text="${st.getLatestTotalCases()}">yes</td>
+            <td th:text="${st.getNewlyReportedCase()}">yes</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+
+</html>
